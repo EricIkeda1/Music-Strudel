@@ -1,20 +1,48 @@
 setcpm(128/4)
 
 $: s("bd*4")
+  .gain(1.05)
 
-$: s("~ sd ~ sd")
+$: s("~ cp ~ cp")
+  .gain(0.55)
 
 $: s("hh*8")
-  .gain(0.4)
+  .gain(0.18)
 
-$: n("0 0 3 5")
+$: s("~ oh ~ oh")
+  .gain(0.16)
+
+$: n("0 ~ 0 3 0 ~ 5 3")
+  .scale("C1:minor")
+  .s("sine")
+  .lpf(250)
+  .gain(0.52)
+
+$: n("0 0 3 5 0 7 5 3")
   .scale("C2:minor")
   .s("sawtooth")
-  .lpf(800)
-  .gain(0.5)
+  .lpf(650)
+  .gain(0.3)
 
-$: n("0 2 4 7")
+$: n("0 ~ 4 ~ 7 ~ 5 ~")
   .scale("C4:minor")
   .s("triangle")
-  .room(0.4)
-  .gain(0.3)
+  .lpf(1500)
+  .room(0.28)
+  .gain(0.11)
+
+$: n("0 2 4 7 5 4 3 2")
+  .scale("C5:minor")
+  .s("sawtooth")
+  .lpf(2300)
+  .room(0.22)
+  .gain(0.17)
+
+$: n("~ ~ 7 ~ ~ 5 ~ 3")
+  .scale("C5:minor")
+  .s("square")
+  .lpf(1800)
+  .gain(0.08)
+
+$: s("~ rim ~ ~ rim ~ ~ rim")
+  .gain(0.05)
