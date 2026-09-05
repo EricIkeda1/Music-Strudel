@@ -1,48 +1,57 @@
-setcpm(128/4)
+setcpm(128/4) // velocidade da música
 
-$: s("bd*4")
-  .gain(1.05)
+$: s("bd*4") // kick principal, segura a batida
+  .gain("1.05 0.9 1 0.95") // dou uma variada no volume pra não ficar tão reto
 
-$: s("~ cp ~ cp")
-  .gain(0.55)
+$: s("~ cp ~ cp") // clap entrando no meio da batida
+  .gain(0.58)
 
-$: s("hh*8")
-  .gain(0.18)
+$: s("~ ~ sd ~ ~ ~ sd ~") // caixa bem leve só pra complementar
+  .gain(0.14)
 
-$: s("~ oh ~ oh")
-  .gain(0.16)
+$: s("hh*8") // hi-hat pra dar mais movimento
+  .gain("0.14 0.2 0.12 0.2 0.14 0.22 0.12 0.18") // volumes diferentes pra ficar mais natural
 
-$: n("0 ~ 0 3 0 ~ 5 3")
-  .scale("C1:minor")
-  .s("sine")
-  .lpf(250)
-  .gain(0.52)
+$: s("~ oh ~ oh") // open hat pra abrir um pouco a bateria
+  .gain(0.14)
 
-$: n("0 0 3 5 0 7 5 3")
+$: s("~ ~ ~ rim ~ rim ~ [rim rim]") // uns detalhes de percussão no fundo
+  .gain(0.07)
+
+$: n("0 ~ 0 0 3 ~ 5 3") // subgrave principal
+  .scale("C1:minor") // deixei bem grave em dó menor
+  .s("sine") // sine fica mais limpa pro sub
+  .lpf(230) // tiro os agudos pra ficar só aquele grave
+  .gain(0.58)
+
+$: n("0 0 ~ 3 0 5 ~ 3") // baixo que acompanha o sub
   .scale("C2:minor")
-  .s("sawtooth")
-  .lpf(650)
-  .gain(0.3)
+  .s("sawtooth") // deixa o baixo com mais cara de eletrônica
+  .lpf(600) // suavizo pra ele não ficar estourado
+  .gain(0.26)
 
-$: n("0 ~ 4 ~ 7 ~ 5 ~")
+$: n("0 ~ 4 ~ 7 ~ 5 ~") // som de fundo pra preencher sem chamar muita atenção
   .scale("C4:minor")
-  .s("triangle")
-  .lpf(1500)
-  .room(0.28)
-  .gain(0.11)
+  .s("triangle") // usei triangle porque é mais suave
+  .lpf(1450)
+  .room(0.25) // um pouco de espaço no fundo
+  .gain(0.09)
 
-$: n("0 2 4 7 5 4 3 2")
+$: n("0 2 4 ~ 7 5 4 2") // melodia principal
   .scale("C5:minor")
-  .s("sawtooth")
-  .lpf(2300)
-  .room(0.22)
-  .gain(0.17)
+  .s("sawtooth") // deixa a melodia mais eletrônica
+  .lpf(2200)
+  .room(0.18) // reverb leve só pra não ficar seco
+  .gain(0.15)
 
-$: n("~ ~ 7 ~ ~ 5 ~ 3")
+$: n("~ ~ 7 ~ ~ 5 ~ 3") // uns hits pequenos entre a melodia
   .scale("C5:minor")
   .s("square")
-  .lpf(1800)
-  .gain(0.08)
+  .lpf(1700)
+  .gain(0.055)
 
-$: s("~ rim ~ ~ rim ~ ~ rim")
-  .gain(0.05)
+$: n("~ 7 ~ ~ 5 ~ 7 ~") // detalhe mais agudo no fundo
+  .scale("C6:minor")
+  .s("sine")
+  .room(0.35) // deixei mais ambiente aqui
+  .gain(0.04)
